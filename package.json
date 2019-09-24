@@ -9,6 +9,7 @@
   "author": "expressjs.com team and Viv Labs",
   "license": "CC-BY-NC-SA-3.0",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.14.0"
   }
 }

@@ -4,12 +4,23 @@
 // Extended to support configurable port and message.
 
 const express = require('express')
+var cors = require('cors'); 
+var bodyParser = require('body-parser');
 
 const app = express()
 const config = require('./config.json')
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 app.get('/', function (req, res) {
-  res.send(config.message||'Hello World!')
+  res.send({ 'message' : (config.message||'Hello World!')}  )
 })
 
 app.listen(config.port, function () {
